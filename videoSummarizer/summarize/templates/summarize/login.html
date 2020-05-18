@@ -1,0 +1,36 @@
+{% extends 'summarize/base.html' %}
+
+{% block content %}
+  <div class='custom-card my-auto' style="margin-left:30%">
+    <h2>Log in</h2>
+    {% if form.errors %}
+      <p style="color: red">Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    <br>
+    <!-- <div class="form-group row"> -->
+    <form method="post">
+      {% csrf_token %}
+        <!-- <fieldset> -->
+        <input type="hidden" name="next" value="{{ next }}" />
+
+        {% for field in form %}
+          <p class="custom-input-1">
+            {{ field.label_tag }}
+            {{ field }}
+            <br>
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% if field.help_text %}
+              <p><small style="color: grey">{{ field.help_text }}</small></p>
+            {% endif %}
+          </p>
+        {% endfor %}
+        <button type="submit">Log in</button>
+        <br>
+        <a href="{% url 'signup' %}" style="margin: 0 auto;">New to Our Site? Sign up</a>
+      <!-- </fieldset> -->
+    </form>
+    <!-- </div> -->
+  </div>
+{% endblock %}

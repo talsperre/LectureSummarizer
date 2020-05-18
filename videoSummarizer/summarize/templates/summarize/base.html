@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Summarizer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+	<!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="{% static 'css/product.css' %}">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+<body>
+
+<!-- Todo: Make current class active -->
+	<!-- <nav  class="navbar navbar-expand-lg navbar-dark bg-primary"> -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a href="{% url 'homepage' %}" class="navbar-brand" href="#"> Video Summarizer </a>
+			<div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">{% block nav-home %}<a class="nav-link" href="{% url 'homepage' %}">Home</a>{% endblock %}</li>
+					{% if user.is_authenticated and user.is_superuser %}
+						<!-- <li class="nav-item">{% block nav-admin %}<a href="/admin">Dashboard</a>{% endblock %}</li> -->
+						<li class="nav-item"><a class="nav-link" href="/admin">Dashboard</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'video_new' %}">Upload Video</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'video_list' %}">My Videos</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+			        {% elif user.is_authenticated %}
+						<li class="nav-item"><a class="nav-link" href="{% url 'video_new' %}">Upload Video</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'video_list' %}">My Videos</a></li>
+						<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+    	  			{% else %}
+      					<li class="nav-item"><a class="nav-link" href = "{% url 'login' %}"> Login </a> </li>
+      					<li class="nav-item"><a class="nav-link" href = "{% url 'signup' %}"> Signup </a> </li>
+      				{% endif %}
+				</ul>
+				<form class="form-inline my-2 my-lg-0" name="myform" method="GET" action="{% url 'search' %}">  
+    			  <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+    			  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    			</form>
+			</div>
+		  </nav>
+	<br><br>
+	<div class="content container">
+		<div class="row">
+			<div class="col-md-12">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+
+ <!-- <div class="custom-footer"> -->
+<!-- </div>
+</div> -->
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'summarize/base.html' %}
+
+{% block content %}
+  <div class="custom-card my-auto" style="margin-left:30%">
+    <h2>Sign up</h2>
+    <br />
+    <form method="post">
+      {% csrf_token %}
+      <!-- <fieldset> -->
+      {% for field in form %}
+        <p class='custom-input'>
+          {{ field }}
+          {% if field.widget %}
+            <small style="color: grey;">{{ field.widget }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </p>
+      {% endfor %}
+      <script src='https://www.google.com/recaptcha/api.js'></script>
+      <div class="g-recaptcha" data-sitekey="6Lf9tTUUAAAAAAzrdzobsKWrjfc69Or3f32GG8or"></div>
+      <br>
+      {% if messages %}
+        {% for message in messages %}
+        <center><p style="color: red">{{ message }}</p></center><br>
+        {% endfor %}
+      {% endif %}
+      <button type="submit">Sign up</button>
+      <!-- </fieldset> -->
+    </form>
+  </div>
+{% endblock %}

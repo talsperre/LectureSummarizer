@@ -1,0 +1,10 @@
+{% extends 'summarize/base.html' %}
+{% block content %}
+<div class="video-disp my-auto">
+    <h1>{{ video.Name }}</h1>
+    <br>
+    <video width='800' height='480' controls>
+        <source src="{{ video.VideoPath.url }}" type='video/mp4'>
+    </video>
+</div>
+{% endblock %}

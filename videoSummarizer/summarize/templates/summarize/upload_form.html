@@ -1,0 +1,20 @@
+{% extends 'summarize/base.html' %}
+{% block content %}
+<div class='custom-card1'>
+    <h2>File Import</h2>
+    <br>
+    {% if form.errors %}
+        <p style="color: red;">
+            Please correct the error{{ form.errors|pluralize }} below.
+        </p>
+    {% endif %}
+
+    <form action="" enctype="multipart/form-data"  method="post">
+        <table>
+            {{ form.as_table }}
+        </table>
+        {% csrf_token %}
+        <br>
+        <input type="submit" value="Submit" class="btn btn-success">
+    </form></div>
+{% endblock %}

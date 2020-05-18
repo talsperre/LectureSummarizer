@@ -1,0 +1,19 @@
+{% extends 'summarize/base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-4">Hello, {{ user }}</h1>
+    <p class="lead">Welcome to our video summarization portal. Our portal can split your video into semantically meaningful portions and summarize the same for you. </p>
+    <hr class="my-4">
+    <p>We use State of the art NLP and computer vision methods to provide the most relevant and useful summaries. </p>
+    {% load static %}
+    <img src="{% static 'img/pipeline.png' %}" style="width: 550px; height: 300px;">
+    <br><br>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'video_new' %}" role="button">Upload Videos</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'video_list' %}" role="button">View My Videos</a>
+    </p>
+  </div>
+
+{% endblock %}

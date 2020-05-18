@@ -1,0 +1,54 @@
+{% extends 'summarize/base.html' %}
+
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Hello, {{ user }}</h1>
+    <p class="lead">Welcome to our video summarization portal. Our portal can split your video into semantically meaningful portions and summarize the same for you. </p>
+    <hr class="my-4">
+    <p>We use State of the art NLP and computer vision methods to provide the most relevant and useful summaries. </p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'video_new' %}" role="button">Upload Videos</a>
+    </p>
+  </div>
+<br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Serial No. </th>
+        <th scope="col">Video Name</th>
+        <th scope="col">Video Summary Link</th>
+        <th scope="col">Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for video in videos %}
+            <tr class="{% cycle 'table-secondary' '' 'table-active' '' %}">
+            <td>{{ forloop.counter }}</td>
+            <td><a href="{% url 'video_detail' pk=video.pk %}"> {{ video.Name }}</a></td>
+            <td><a href="{% url 'video_summary' pk=video.pk %}"> Link </a></td>
+            <td></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<br>
+<div class="pagination" style="margin-left:45%">
+    <span class="step-links">
+        {% if videos.has_previous %}
+            <a href="?page={{ videos.previous_page_number }}"><button type="button" class="btn btn-primary" >Previous</button></a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ videos.number }} of {{ videos.paginator.num_pages }}              
+        </span>
+
+        {% if videos.has_next %}
+            <a href="?page={{ videos.next_page_number }}"> <button type="button" class="btn btn-primary" >Next</button></a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

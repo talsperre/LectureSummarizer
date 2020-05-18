@@ -1,0 +1,27 @@
+{% extends 'summarize/base.html' %}
+{% block content %}
+<div class="video-disp my-auto">
+    <h1>Split Video</h1>
+    <video width='800' height='480' controls>
+        <source src="{{ cur_path }}" type='video/mp4'>
+    </video>
+    <br>
+    <h1>Tags</h1>
+    <p style="text-align: center; font-size: 16px;">
+    {% for tag in tags %}
+        <span class="{% cycle 'badge badge-success' 'badge badge-danger' 'badge badge-warning' 'badge badge-info' %}" >
+            {{tag}}
+        </span>
+    {% endfor %}
+    </p>
+    <br>
+    <h1>Summary</h1>
+    <p style="text-align: center;">
+        {% for summary in summaries %}
+            <div class="alert alert-dismissible alert-secondary">
+                {{summary}}
+            </div>
+        {% endfor %}
+        </p>
+</div>
+{% endblock %}

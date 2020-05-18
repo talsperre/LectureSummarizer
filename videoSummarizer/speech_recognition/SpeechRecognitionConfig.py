@@ -1,0 +1,1 @@
+GOOGLE_CLOUD_BUCKET_NAME = "software_engineering_project"
