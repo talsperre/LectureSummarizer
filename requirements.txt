@@ -23,7 +23,7 @@ cli-helpers==1.2.1
 click==7.1.1
 configobj==5.0.6
 constantly==15.1.0
-cryptography==2.8
+cryptography==3.2
 cssselect==1.1.0
 cvxopt==1.2.5
 cvxpy==1.1.0a3
