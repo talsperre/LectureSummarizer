@@ -79,7 +79,7 @@ kiwisolver==1.1.0
 librosa==0.7.2
 line-profiler==3.0.2
 llvmlite==0.31.0
-lxml==4.4.2
+lxml==4.6.5
 Markdown==3.2.1
 MarkupSafe==1.1.1
 mask-rcnn==2.1
