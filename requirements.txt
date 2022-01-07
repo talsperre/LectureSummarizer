@@ -25,7 +25,7 @@ configobj==5.0.6
 constantly==15.1.0
 cryptography==2.8
 cssselect==1.1.0
-cvxopt==1.2.5
+cvxopt==1.2.7
 cvxpy==1.1.0a3
 cvxpylayers==0.1.2
 cycler==0.10.0
