@@ -120,7 +120,7 @@ progress-bar==8
 prometheus-client==0.7.1
 prompt-toolkit==2.0.10
 Protego==0.1.16
-protobuf==3.11.3
+protobuf==3.18.3
 ptyprocess==0.6.0
 punctuator==0.9.5
 py==1.8.1
